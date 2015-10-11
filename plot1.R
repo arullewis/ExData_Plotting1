@@ -14,6 +14,8 @@ unzip("./data/housepowercon.zip",exdir="./data")
 
 }
 
+# check if the data has been read already 
+
 if(!'powerdata'%in% ls())
    {
 setAs("character","PDate", function(from) as.Date(from, format="%d/%m/%Y") )
@@ -22,9 +24,11 @@ tableColClass<- c('PDate','character','numeric','numeric','numeric', 'numeric','
 
 powerdata<-read.csv("./data/household_power_consumption.txt", 
                     colClasses = tableColClass,header=TRUE, sep=';' ,na.strings="?")
-
+#filter data
 powerdata<-powerdata[powerdata$Date>=as.Date("2007-02-01") & powerdata$Date<=as.Date("2007-02-02"),]
 }
+
+#plot to png
 png(filename="plot1.png", width=480, height=480, units="px")
 hist(powerdata$Global_active_power, main='Global Active Power', xlab='Global Active Power (kilowatts)', ylab = 'Frequency', col="red")
 dev.off()
