@@ -10,7 +10,7 @@ if(!file.exists("data")){
 if(!file.exists("./data/housepowercon.zip"))
 {
 download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip","./data/housepowercon.zip")
-unzip("./data/housepowercon.zip",exdir="./data?rea")
+unzip("./data/housepowercon.zip",exdir="./data")
         
 
 }
